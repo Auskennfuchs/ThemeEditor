@@ -32,11 +32,14 @@ class PaletteEditor extends Component {
     static getDerivedStateFromProps(props, state) {
         if (props.color !== state.propsActiveColor) {
             const { palette } = props
+            const color = palette[props.color]
+            if(color) {
             return {
-                selectedColor: palette[props.color].name,
-                colorName: palette[props.color].name,
+                selectedColor: color.name,
+                colorName: color.name,
                 propsActiveColor: props.color,
             }
+        }
         }
         return null
     }
